@@ -1,0 +1,16 @@
+<%- include("../cabecalho", { titulo: "Acutis IVC | Planejamento" }) %>
+
+        <section class="cabecalho"><div class="titulo">
+            <h1>Excluir planejamento</h1><p>Confirme se deseja excluir este planejamento.</p>
+        </div></section>
+        <section class="painel">
+            <div class="painel-header"><h2>Confirmação de exclusão</h2></div>
+            <p>Tem certeza de que deseja excluir o planejamento do grupo
+                <strong><%= planejamento.grupo && planejamento.grupo.nome ? planejamento.grupo.nome : 'selecionado' %></strong>?</p>
+            <p>Esta ação não poderá ser desfeita.</p>
+            <form action="/planejamento/del/<%= planejamento._id %>" method="POST">
+                <button type="submit" class="btn principal"><i class="fas fa-trash"></i> Confirmar exclusão</button>
+                <a href="/planejamento/lst">Cancelar</a>
+            </form>
+        </section>
+<%- include("../rodape.ejs") %>

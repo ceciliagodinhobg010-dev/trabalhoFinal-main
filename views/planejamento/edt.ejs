@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento | Acutis IVC</title>
+    <link rel="stylesheet" href="/css/4.3-Catequista_Planejamento.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="/logo.jpg" alt="Acutis IVC">
+            <h2>Acutis IVC</h2>
+            <span>Sistema de Gestão da Catequese</span>
+        </div>
+        <nav>
+            <a href="/catequistaInicial"><i class="fas fa-house"></i> Início</a>
+            <a href="/planejamento" class="ativo"><i class="fas fa-calendar-days"></i> Planejamento</a>
+            <a href="/catequizandos"><i class="fas fa-clipboard-check"></i> Frequência</a>
+            <a href="/materiais"><i class="fas fa-book"></i> Materiais</a>
+            <a href="/grupos"><i class="fas fa-users"></i> Grupos</a>
+        </nav>
+    </aside>
+    <main class="principal">
+        <header class="banner"><img src="/topo.png" class="banner-img" alt="Banner"></header>
+
+        <section class="cabecalho"><div class="titulo">
+            <h1>Editar planejamento</h1><p>Selecione o tema de cada encontro e organize seu planejamento.</p>
+        </div></section>
+        <section class="cards">
+            <div class="card rosa"><div class="icone"><i class="fas fa-calendar"></i></div>
+                <div><h3><%= planejamento.encontros.length %></h3><span>Total de Encontros</span></div></div>
+            <div class="card verde"><div class="icone"><i class="fas fa-check"></i></div>
+                <div><h3><%= planejamento.encontros.filter(e => e.tema).length %></h3><span>Planejados</span></div></div>
+            <div class="card dourado"><div class="icone"><i class="fas fa-star"></i></div>
+                <div><h3><%= planejamento.encontros.filter(e => e.tema === 'Outro').length %></h3><span>Personalizados</span></div></div>
+            <div class="card verde"><div class="icone"><i class="fas fa-circle-check"></i></div>
+                <div><h3><%= planejamento.encontros.filter(e => e.status === 'Realizado').length %></h3><span>Realizados</span></div></div>
+        </section>
+        <section class="painel">
+            <div class="painel-header"><div><h2>Cronograma Catequético</h2>
+                <p>Organize os temas, o status e as observações de cada encontro.</p></div></div>
+            <form action="/planejamento/edt/<%= planejamento._id %>" method="POST">
+                <div class="planejamento-lista">
+                    <% planejamento.encontros.forEach((encontro, i) => { %>
+                        <div class="encontro-card">
+                            <div class="dados">
+                                <h3>Encontro <%= encontro.numero %></h3>
+                                <p><%= encontro.data || 'Data não definida' %></p>
+                            </div>
+                            <input type="hidden" name="numero" value="<%= encontro.numero %>">
+                            <div class="campo">
+                                <label>Tema do encontro</label>
+                                <select name="tema" class="select-encontro">
+                                    <option value="">Selecione o tema do encontro</option>
+<optgroup label="Livro 1 — Pré-Catecumenato">
+  <option value="Jesus acolhe as crianças">Jesus acolhe as crianças</option>
+  <option value="Como Deus nos fala sobre seu Reino">Como Deus nos fala sobre seu Reino</option>
+  <option value="Jesus: uma criança enviada por Deus">Jesus: uma criança enviada por Deus</option>
+  <option value="Jesus, as crianças e o Reino de Deus">Jesus, as crianças e o Reino de Deus</option>
+  <option value="Maria, mãe de Jesus e nossa mãe">Maria, mãe de Jesus e nossa mãe</option>
+  <option value="Por que mataram Jesus?">Por que mataram Jesus?</option>
+  <option value="Deus Pai que é bom deu-Lhe a vida novamente">Deus Pai que é bom deu-Lhe a vida novamente</option>
+  <option value="Jesus vivo faz de nós sua família">Jesus vivo faz de nós sua família</option>
+  <option value="É tempo de vigiar e esperar">É tempo de vigiar e esperar</option>
+</optgroup>
+<optgroup label="Livro 2 — Catecumenato">
+  <option value="Como Jesus, crescer em sabedoria, estatura e graça">Como Jesus, crescer em sabedoria, estatura e graça</option>
+  <option value="RITO: Celebração de Entrada no Catecumenato">RITO: Celebração de Entrada no Catecumenato</option>
+  <option value="Deus nos fala nos acontecimentos">Deus nos fala nos acontecimentos</option>
+  <option value="Deus fala na natureza">Deus fala na natureza</option>
+  <option value="Deus fala na história do povo de Israel e em Jesus">Deus fala na história do povo de Israel e em Jesus</option>
+  <option value="Deus nos fala no grupo de seguidores de Jesus">Deus nos fala no grupo de seguidores de Jesus</option>
+  <option value="Deus nos fala no Mistério Pascal">Deus nos fala no Mistério Pascal</option>
+  <option value="Deus fala na Bíblia">Deus fala na Bíblia</option>
+  <option value="RITO: Celebração de Entrega da Palavra de Deus">RITO: Celebração de Entrega da Palavra de Deus</option>
+  <option value="Deus Pai/Mãe é o nosso criador">Deus Pai/Mãe é o nosso criador</option>
+  <option value="Eu fui criado por Deus">Eu fui criado por Deus</option>
+  <option value="Eu e minha relação com a família">Eu e minha relação com a família</option>
+  <option value="Eu e minha relação com os outros">Eu e minha relação com os outros</option>
+  <option value="Eu e minha relação com o ambiente">Eu e minha relação com o ambiente</option>
+  <option value="Celebração da Vida">Celebração da Vida</option>
+</optgroup>
+<optgroup label="Livro 3 — Catecumenato">
+  <option value="O Enviado de Deus: Jesus">O Enviado de Deus: Jesus</option>
+  <option value="A Infância de Jesus">A Infância de Jesus</option>
+  <option value="Os Evangelhos: Mateus">Os Evangelhos: Mateus</option>
+  <option value="Os Evangelhos: Marcos">Os Evangelhos: Marcos</option>
+  <option value="Os Evangelhos: Lucas">Os Evangelhos: Lucas</option>
+  <option value="Os Evangelhos: João">Os Evangelhos: João</option>
+  <option value="Evangelho da Igreja: Atos dos Apóstolos">Evangelho da Igreja: Atos dos Apóstolos</option>
+  <option value="Parábola do Semeador">Parábola do Semeador</option>
+  <option value="Parábola da Ovelha Perdida">Parábola da Ovelha Perdida</option>
+  <option value="Parábola dos Talentos">Parábola dos Talentos</option>
+  <option value="Parábola da Videira">Parábola da Videira</option>
+  <option value="As ações de Jesus: refeição com as pessoas">As ações de Jesus: refeição com as pessoas</option>
+  <option value="As ações de Jesus: acolhida dos que erram">As ações de Jesus: acolhida dos que erram</option>
+</optgroup>
+<optgroup label="Livro 4 — Catecumenato">
+  <option value="As ações de Jesus: cura dos doentes">As ações de Jesus: cura dos doentes</option>
+  <option value="As ações de Jesus: encontro com os que precisam de ajuda">As ações de Jesus: encontro com os que precisam de ajuda</option>
+  <option value="Jesus nos chama para fazer coisas boas: Envio">Jesus nos chama para fazer coisas boas: Envio</option>
+  <option value="Jesus nos chama para fazer coisas boas: Vocação">Jesus nos chama para fazer coisas boas: Vocação</option>
+  <option value="Jesus nos chama para fazer coisas boas: O Bom Samaritano">Jesus nos chama para fazer coisas boas: O Bom Samaritano</option>
+  <option value="Obras de Misericórdia Espirituais">Obras de Misericórdia Espirituais</option>
+  <option value="Obras de Misericórdia Corporais">Obras de Misericórdia Corporais</option>
+  <option value="Jesus morre numa cruz para dar vida">Jesus morre numa cruz para dar vida</option>
+  <option value="Jesus Cristo vivo está entre nós">Jesus Cristo vivo está entre nós</option>
+  <option value="Jornada dos amigos de Jesus">Jornada dos amigos de Jesus</option>
+</optgroup>
+<optgroup label="Livro 5 — Catecumenato">
+  <option value="Início da Quaresma — Quarta-feira de Cinzas">Início da Quaresma — Quarta-feira de Cinzas</option>
+  <option value="Campanha da Fraternidade">Campanha da Fraternidade</option>
+  <option value="Encontro da Campanha da Fraternidade — CNBB">Encontro da Campanha da Fraternidade — CNBB</option>
+  <option value="Quaresma: Purificando o Coração para a Páscoa">Quaresma: Purificando o Coração para a Páscoa</option>
+  <option value="Via Sacra: Jesus é nosso Rei">Via Sacra: Jesus é nosso Rei</option>
+  <option value="Os discípulos veem Jesus rezar">Os discípulos veem Jesus rezar</option>
+  <option value="Jesus ensina a rezar">Jesus ensina a rezar</option>
+  <option value="RITO: Celebração de Entrega da Oração do Senhor">RITO: Celebração de Entrega da Oração do Senhor</option>
+  <option value="Práticas de Oração: Leitura Orante da Palavra de Deus">Práticas de Oração: Leitura Orante da Palavra de Deus</option>
+  <option value="Práticas de Oração: Ofício Divino para crianças">Práticas de Oração: Ofício Divino para crianças</option>
+  <option value="Ascensão do Senhor">Ascensão do Senhor</option>
+  <option value="Pentecostes">Pentecostes</option>
+</optgroup>
+<optgroup label="Livro 6 — Catecumenato">
+  <option value="Maria, Mãe de Cristo e nossa Mãe">Maria, Mãe de Cristo e nossa Mãe</option>
+  <option value="Origem da família de Jesus">Origem da família de Jesus</option>
+  <option value="A Família de Israel: Patriarcas">A Família de Israel: Patriarcas</option>
+  <option value="A Família de Israel: Moisés">A Família de Israel: Moisés</option>
+  <option value="A Família de Israel: Juízes">A Família de Israel: Juízes</option>
+  <option value="A Família de Israel: Reis">A Família de Israel: Reis</option>
+  <option value="A Família de Israel: Profetas">A Família de Israel: Profetas</option>
+  <option value="O retrato da primeira família Cristã">O retrato da primeira família Cristã</option>
+  <option value="Vocações — Serviço de Animação Vocacional">Vocações — Serviço de Animação Vocacional</option>
+  <option value="Creio em Deus Pai e Criador">Creio em Deus Pai e Criador</option>
+  <option value="Creio na Santíssima Trindade">Creio na Santíssima Trindade</option>
+  <option value="Creio na Igreja: Una, Santa, Católica e Apostólica">Creio na Igreja: Una, Santa, Católica e Apostólica</option>
+  <option value="Nossa ajuda à família-Igreja">Nossa ajuda à família-Igreja</option>
+  <option value="RITO: Entrega do Símbolo da Fé">RITO: Entrega do Símbolo da Fé</option>
+  <option value="Gincana Bíblica">Gincana Bíblica</option>
+</optgroup>
+<optgroup label="Livro 7 — Catecumenato">
+  <option value="Com Jesus, caminhamos na Igreja">Com Jesus, caminhamos na Igreja</option>
+  <option value="Mandamentos da Igreja de Jesus">Mandamentos da Igreja de Jesus</option>
+  <option value="Maria, Mãe das Comunidades">Maria, Mãe das Comunidades</option>
+  <option value="Entrega do Rosário da Virgem Maria">Entrega do Rosário da Virgem Maria</option>
+  <option value="Preparação para as Romarias">Preparação para as Romarias</option>
+  <option value="Jesus Cristo, a presença do Pai">Jesus Cristo, a presença do Pai</option>
+  <option value="A família-Igreja continua a presença de Cristo">A família-Igreja continua a presença de Cristo</option>
+  <option value="Os Sete Sacramentos da Igreja">Os Sete Sacramentos da Igreja</option>
+  <option value="Batismo: início da Vida Cristã">Batismo: início da Vida Cristã</option>
+  <option value="Eucaristia: o alimento da família-Igreja">Eucaristia: o alimento da família-Igreja</option>
+  <option value="Reconciliação">Reconciliação</option>
+  <option value="Advento">Advento</option>
+</optgroup>
+<optgroup label="Personalizado">
+  <option value="Outro">Outro tema</option>
+</optgroup>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label>Status</label>
+                                <select name="status" class="status-encontro">
+                                    <option value="Pendente" <%= encontro.status === 'Pendente' ? 'selected' : '' %>>Pendente</option>
+                                    <option value="Planejado" <%= encontro.status === 'Planejado' ? 'selected' : '' %>>Planejado</option>
+                                    <option value="Realizado" <%= encontro.status === 'Realizado' ? 'selected' : '' %>>Realizado</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label>Observações</label>
+                                <textarea name="observacao" class="observacao-encontro" placeholder="Adicione observações sobre o encontro..."><%= encontro.observacao || '' %></textarea>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+                <button type="submit" class="btn principal"><i class="fas fa-save"></i> Salvar Planejamento</button>
+                <a href="/planejamento/lst">Cancelar</a>
+            </form>
+        </section>
+<%- include("../rodape.ejs") %>

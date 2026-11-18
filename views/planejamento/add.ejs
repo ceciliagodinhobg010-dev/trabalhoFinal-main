@@ -1,0 +1,21 @@
+<%- include("../cabecalho", { titulo: "Acutis IVC | Planejamento" }) %>
+
+        <section class="cabecalho"><div class="titulo">
+            <h1>Novo planejamento</h1><p>Selecione o grupo para criar seu cronograma catequético.</p>
+        </div></section>
+        <section class="painel">
+            <div class="painel-header"><h2>Dados do planejamento</h2></div>
+            <form action="/planejamento/add" method="POST">
+                <div class="campo">
+                    <label for="grupo">Grupo</label>
+                    <select name="grupo" id="grupo" required>
+                        <option value="">Selecione o grupo</option>
+                        <% grupos.forEach(g => { %>
+                            <option value="<%= g._id %>"><%= g.nome %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <button type="submit" class="btn principal"><i class="fas fa-save"></i> Criar planejamento</button>
+                <a href="/planejamento/lst">Cancelar</a>
+            </form>
+<%- include("../rodape.ejs") %>

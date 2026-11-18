@@ -1,0 +1,1480 @@
+/* =========================================================
+   ACUTIS IVC — PLANEJAMENTO
+   ========================================================= */
+
+:root {
+    --primary: #1b4f9c;
+    --primary-dark: #143b73;
+    --secondary: #4a90e2;
+
+    --rosa: #d98295;
+    --rosa-claro: #f9eaee;
+
+    --amarelo: #d6ae4c;
+    --amarelo-claro: #fff7df;
+
+    --jeans: #55799b;
+    --jeans-claro: #edf3f8;
+
+    --vermelho: #c85d65;
+    --vermelho-claro: #fae9ea;
+
+    --verde: #4f9670;
+    --verde-claro: #eaf5ef;
+
+    --fundo: #f6f8fb;
+    --branco: #ffffff;
+
+    --texto: #26384d;
+    --texto-secundario: #718096;
+
+    --borda: #e2e8f0;
+
+    --sombra: 0 5px 18px rgba(31, 55, 80, 0.07);
+    --sombra-hover: 0 9px 25px rgba(31, 55, 80, 0.10);
+
+    --raio: 16px;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: "Poppins", sans-serif;
+}
+
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.layout {
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   MENU LATERAL
+   ========================================================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 270px;
+    height: 100vh;
+
+    background: #fff;
+
+    box-shadow: var(--sombra);
+
+    z-index: 999;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    padding: 35px 20px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #edf2f7;
+}
+
+.logo img {
+    width: 90px;
+}
+
+.logo h2 {
+    margin-top: 15px;
+
+    color: var(--primary);
+
+    font-size: 30px;
+
+    font-family: "Cormorant Garamond", serif;
+}
+
+.logo span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+
+    gap: 8px;
+}
+
+.sidebar nav a {
+    text-decoration: none;
+
+    color: var(--texto);
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 16px 20px;
+
+    border-radius: 15px;
+
+    transition: 0.3s ease;
+
+    font-weight: 500;
+}
+
+.sidebar nav a i {
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    color: inherit;
+}
+
+.sidebar nav a:hover {
+    background: #edf6ff;
+
+    color: var(--primary);
+}
+
+.sidebar nav a.ativo {
+    background:
+        linear-gradient(
+            90deg,
+            var(--secondary),
+            #b6dcff
+        );
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================= */
+
+.principal {
+    margin-left: 270px;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   BANNER
+   ========================================================= */
+
+.banner {
+    width: 100%;
+
+    background: #fff;
+
+    overflow: hidden;
+}
+
+.banner-img {
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.cabecalho {
+    padding: 38px 60px 18px;
+}
+
+.titulo h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 42px;
+
+    line-height: 1;
+
+    color: var(--primary);
+
+    font-weight: 700;
+}
+
+.titulo p {
+    margin-top: 8px;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CARDS DE INDICADORES
+   ========================================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 16px;
+
+    padding: 8px 60px 18px;
+}
+
+.card {
+    min-height: 108px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 18px;
+
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--raio);
+
+    box-shadow: var(--sombra);
+
+    transition: 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--sombra-hover);
+}
+
+.card .icone {
+    flex: 0 0 42px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+}
+
+.card .icone i {
+    font-size: 17px;
+}
+
+.card h3 {
+    font-size: 25px;
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    color: var(--primary);
+}
+
+.card span {
+    display: block;
+
+    margin-top: 6px;
+
+    color: var(--texto-secundario);
+
+    font-size: 11.5px;
+
+    line-height: 1.3;
+}
+
+
+/* ROSA */
+
+.card.rosa {
+    border-top: 3px solid var(--rosa);
+}
+
+.card.rosa .icone {
+    background: var(--rosa-claro);
+}
+
+.card.rosa .icone i {
+    color: var(--rosa);
+}
+
+
+/* VERDE */
+
+.card.verde {
+    border-top: 3px solid var(--verde);
+}
+
+.card.verde .icone {
+    background: var(--verde-claro);
+}
+
+.card.verde .icone i {
+    color: var(--verde);
+}
+
+
+/* AMARELO */
+
+.card.dourado {
+    border-top: 3px solid var(--amarelo);
+}
+
+.card.dourado .icone {
+    background: var(--amarelo-claro);
+}
+
+.card.dourado .icone i {
+    color: var(--amarelo);
+}
+
+
+/* AZUL */
+
+.card.roxo {
+    border-top: 3px solid var(--secondary);
+}
+
+.card.roxo .icone {
+    background: var(--jeans-claro);
+}
+
+.card.roxo .icone i {
+    color: var(--secondary);
+}
+
+
+/* =========================================================
+   PAINEL
+   ========================================================= */
+
+.painel {
+    margin: 10px 60px 45px;
+
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+
+    border-radius: 18px;
+
+    box-shadow: var(--sombra);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CABEÇALHO DO CRONOGRAMA
+   ========================================================= */
+
+.painel-header {
+    min-height: 78px;
+
+    padding: 18px 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-bottom: 1px solid #edf1f5;
+}
+
+.painel-header h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 27px;
+
+    color: var(--primary);
+
+    line-height: 1.1;
+}
+
+.painel-header p {
+    margin-top: 4px;
+
+    color: var(--texto-secundario);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   BOTÃO SALVAR
+   ========================================================= */
+
+.btn.principal {
+    flex: 0 0 auto;
+
+    width: auto;
+
+    min-width: 0;
+
+    height: 34px;
+
+    padding: 0 11px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: var(--primary);
+
+    color: #fff;
+
+    font-size: 10.5px;
+
+    font-weight: 600;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.btn.principal i {
+    font-size: 10px;
+}
+
+.btn.principal:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 4px 10px rgba(27, 79, 156, 0.16);
+}
+
+
+/* =========================================================
+   PROGRESSO
+   ========================================================= */
+
+.progresso-container {
+    margin: 18px 24px 12px;
+
+    padding: 13px 15px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e8edf3;
+
+    border-radius: 12px;
+}
+
+.progresso-topo {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 8px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color: var(--texto);
+}
+
+#textoProgresso {
+    color: var(--primary);
+}
+
+.barra-progresso {
+    width: 100%;
+
+    height: 6px;
+
+    background: #e6ecf2;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.barra-preenchida {
+    width: 0;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--secondary),
+            var(--primary)
+        );
+
+    border-radius: 20px;
+
+    transition: width 0.3s ease;
+}
+
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+
+.filtros {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin: 0 24px 14px;
+
+    padding-bottom: 2px;
+}
+
+.filtro-btn {
+    height: 30px;
+
+    padding: 0 12px;
+
+    border: 1px solid #dfe6ee;
+
+    border-radius: 8px;
+
+    background: #fff;
+
+    color: #64748b;
+
+    font-size: 10.5px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.filtro-btn:hover {
+    border-color: #b9cde0;
+
+    color: var(--primary);
+
+    background: #f8fbfe;
+}
+
+.filtro-btn.ativo {
+    background: var(--primary);
+
+    color: #fff;
+
+    border-color: var(--primary);
+}
+
+
+/* =========================================================
+   LISTA DE ENCONTROS
+   ========================================================= */
+
+.planejamento-lista {
+    padding: 0 24px 26px;
+}
+
+
+/* =========================================================
+   CARD DO ENCONTRO
+   ========================================================= */
+
+.encontro-card {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 155px minmax(0, 1fr);
+
+    column-gap: 24px;
+
+    padding: 18px 19px;
+
+    margin-bottom: 11px;
+
+    background: #fff;
+
+    border: 1px solid #e3e9f0;
+
+    border-radius: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.encontro-card:hover {
+    border-color: #cad8e5;
+
+    box-shadow: 0 5px 16px rgba(35, 55, 75, 0.06);
+}
+
+
+/* =========================================================
+   ENCONTRO REALIZADO
+   ========================================================= */
+
+.encontro-card.card-realizado {
+    border-left: 4px solid var(--verde);
+    padding-left: 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fbfefc 0%,
+            #fff 28%
+        );
+}
+
+
+/* =========================================================
+   CABEÇALHO DO ENCONTRO
+   ========================================================= */
+
+.encontro-cabecalho {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin: 0;
+
+    padding-right: 8px;
+}
+
+
+/* =========================================================
+   NÚMERO DO ENCONTRO
+   ========================================================= */
+
+.numero-encontro {
+    display: block;
+
+    color: var(--primary);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   DATA
+   ========================================================= */
+
+.data-encontro {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--texto-secundario);
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-encontro {
+    width: 100%;
+
+    max-width: 145px;
+
+    height: 32px;
+
+    padding: 0 9px;
+
+    border: 1px solid #d9e2eb;
+
+    border-radius: 8px;
+
+    background: #f9fbfd;
+
+    color: #526274;
+
+    font-size: 10.5px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.status-encontro:hover {
+    border-color: #c1d2e1;
+
+    background: #fff;
+}
+
+.status-encontro:focus {
+    border-color: var(--secondary);
+
+    box-shadow:
+        0 0 0 3px rgba(74, 144, 226, 0.08);
+}
+
+
+/* =========================================================
+   ÁREA DE PLANEJAMENTO
+   ========================================================= */
+
+.campo-planejamento {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin: 0 0 13px;
+}
+
+.campo-planejamento label {
+    color: #526274;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SELECT DO TEMA
+   ========================================================= */
+
+.select-encontro {
+    width: 100%;
+
+    height: 39px;
+
+    padding: 0 12px;
+
+    border: 1px solid #d8e1ea;
+
+    border-radius: 9px;
+
+    background: #fbfcfe;
+
+    color: var(--texto);
+
+    font-size: 11.5px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.select-encontro:hover {
+    background: #fff;
+
+    border-color: #bdcddd;
+}
+
+.select-encontro:focus {
+    background: #fff;
+
+    border-color: var(--secondary);
+
+    box-shadow:
+        0 0 0 3px rgba(74, 144, 226, 0.08);
+}
+
+
+/* =========================================================
+   OUTRO
+   ========================================================= */
+
+.outro-input {
+    display: none;
+
+    width: 100%;
+
+    height: 39px;
+
+    padding: 0 12px;
+
+    border: 1px solid #d8e1ea;
+
+    border-radius: 9px;
+
+    background: #fff;
+
+    color: var(--texto);
+
+    font-size: 11.5px;
+
+    outline: none;
+}
+
+.outro-input:focus {
+    border-color: var(--secondary);
+
+    box-shadow:
+        0 0 0 3px rgba(74, 144, 226, 0.08);
+}
+
+.outro-input::placeholder {
+    color: #9aa7b5;
+}
+
+
+/* =========================================================
+   AÇÕES
+   ========================================================= */
+
+.acoes-encontro {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin: 0;
+
+    padding-top: 1px;
+}
+
+.acoes-encontro button {
+    height: 31px;
+
+    padding: 0 10px;
+
+    border: 1px solid #dce4ec;
+
+    border-radius: 8px;
+
+    background: #fff;
+
+    color: var(--primary);
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    transition: 0.2s ease;
+}
+
+.acoes-encontro button i {
+    font-size: 10px;
+}
+
+.acoes-encontro button:hover {
+    background: #f3f7fb;
+
+    border-color: #c4d4e3;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CORES DAS AÇÕES
+   ========================================================= */
+
+.acoes-encontro button:nth-child(1) {
+    color: var(--jeans);
+}
+
+.acoes-encontro button:nth-child(2) {
+    color: var(--primary);
+}
+
+.acoes-encontro button:nth-child(3) {
+    color: var(--rosa);
+}
+
+
+/* =========================================================
+   OBSERVAÇÕES
+   ========================================================= */
+
+.campo-observacao {
+    grid-column: 1 / -1;
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #edf1f5;
+}
+
+.campo-observacao label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #526274;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.observacao-encontro {
+    width: 100%;
+
+    min-height: 76px;
+
+    padding: 10px 12px;
+
+    resize: vertical;
+
+    border: 1px solid #d8e1ea;
+
+    border-radius: 9px;
+
+    background: #fbfcfe;
+
+    color: var(--texto);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    outline: none;
+}
+
+.observacao-encontro:focus {
+    background: #fff;
+
+    border-color: var(--secondary);
+
+    box-shadow:
+        0 0 0 3px rgba(74, 144, 226, 0.08);
+}
+
+
+/* =========================================================
+   CONFIGURAÇÕES
+   ========================================================= */
+
+.configuracoes {
+    margin: 18px 60px;
+
+    width: max-content;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px 17px;
+
+    background: #fff;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 13px;
+
+    box-shadow: var(--sombra);
+}
+
+.configuracoes label {
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color: var(--texto);
+}
+
+.configuracoes input {
+    width: 60px;
+
+    height: 34px;
+
+    border: 1px solid #dce4ec;
+
+    border-radius: 8px;
+
+    background: #f7fafd;
+
+    color: var(--primary);
+
+    text-align: center;
+
+    font-size: 12px;
+
+    outline: none;
+}
+
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+
+.rodape {
+    margin: 40px 0 25px;
+
+    text-align: center;
+
+    color: #8a97a6;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   ANIMAÇÃO
+   ========================================================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+.encontro-card {
+    animation: aparecer 0.25s ease;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 1050px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .encontro-card {
+        grid-template-columns:
+            135px minmax(0, 1fr);
+
+        column-gap: 18px;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        width: 90px;
+    }
+
+    .logo h2,
+    .logo span {
+        display: none;
+    }
+
+    .sidebar nav a {
+        justify-content: center;
+
+        padding: 16px;
+
+        font-size: 0;
+    }
+
+    .sidebar nav a i {
+        font-size: 18px;
+    }
+
+    .principal {
+        margin-left: 90px;
+    }
+
+    .cabecalho,
+    .cards,
+    .painel {
+        margin-left: 30px;
+
+        margin-right: 30px;
+    }
+
+    .cabecalho {
+        padding-left: 0;
+
+        padding-right: 0;
+    }
+
+    .cards {
+        padding-left: 0;
+
+        padding-right: 0;
+    }
+
+    .painel {
+        margin-left: 30px;
+
+        margin-right: 30px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .painel-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .btn.principal {
+        align-self: flex-start;
+    }
+
+    .encontro-card {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        padding: 17px;
+    }
+
+    .encontro-cabecalho {
+        padding-right: 0;
+    }
+
+    .status-encontro {
+        max-width: 180px;
+    }
+
+    .campo-observacao {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .principal {
+        margin-left: 75px;
+    }
+
+    .sidebar {
+        width: 75px;
+    }
+
+    .cabecalho {
+        padding-top: 28px;
+    }
+
+    .titulo h1 {
+        font-size: 35px;
+    }
+
+    .painel {
+        margin-left: 16px;
+
+        margin-right: 16px;
+    }
+
+    .progresso-container,
+    .filtros {
+        margin-left: 16px;
+
+        margin-right: 16px;
+    }
+
+    .planejamento-lista {
+        padding-left: 16px;
+
+        padding-right: 16px;
+    }
+
+    .filtros {
+        overflow-x: auto;
+
+        padding-bottom: 5px;
+    }
+
+    .filtro-btn {
+        flex: 0 0 auto;
+    }
+
+}
+
+/* =========================================================
+   CORREÇÃO DEFINITIVA — CABEÇALHO DO CRONOGRAMA
+   ========================================================= */
+
+.painel-header {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    padding: 16px 22px !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 20px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* Área do título */
+
+.painel-header > div {
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    flex: 1 1 auto !important;
+}
+
+
+/* Título */
+
+.painel-header h2 {
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-family: "Cormorant Garamond", serif !important;
+    font-size: 27px !important;
+    line-height: 1.1 !important;
+
+    color: var(--primary) !important;
+}
+
+
+/* Descrição */
+
+.painel-header p {
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 3px 0 0 !important;
+    padding: 0 !important;
+
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+
+    color: var(--texto-secundario) !important;
+}
+
+
+/* =========================================================
+   BOTÃO SALVAR — NÃO DEIXAR ESTICAR
+   ========================================================= */
+
+.painel-header .btn.principal,
+.btn.principal {
+    width: auto !important;
+    min-width: 150px !important;
+    max-width: 180px !important;
+
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+
+    flex: 0 0 auto !important;
+
+    padding: 0 14px !important;
+    margin: 0 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: none !important;
+    border-radius: 8px !important;
+
+    background: var(--primary) !important;
+    color: #fff !important;
+
+    font-family: "Poppins", sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+
+    box-sizing: border-box !important;
+}
+
+.painel-header .btn.principal i,
+.btn.principal i {
+    width: auto !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 10px !important;
+    line-height: 1 !important;
+}
+
+
+/* Hover */
+
+.painel-header .btn.principal:hover,
+.btn.principal:hover {
+    background: var(--primary-dark) !important;
+
+    transform: translateY(-1px) !important;
+
+    box-shadow: 0 4px 10px rgba(27, 79, 156, 0.16) !important;
+}
+
+
+/* =========================================================
+   GARANTIR QUE O PAINEL NÃO CRIE ESPAÇO EXTRA
+   ========================================================= */
+
+.painel {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.painel-header::before,
+.painel-header::after {
+    height: auto !important;
+}
+
+
+/* =========================================================
+   PROGRESSO — FICA LOGO ABAIXO DO CABEÇALHO
+   ========================================================= */
+
+.progresso-container {
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 12px 22px 10px !important;
+    padding: 10px 13px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+    .painel-header {
+        flex-direction: column !important;
+        align-items: stretch !important;
+
+        padding: 14px 15px !important;
+    }
+
+    .painel-header .btn.principal,
+    .btn.principal {
+        width: 100% !important;
+        max-width: none !important;
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento | Acutis IVC</title>
+    <link rel="stylesheet" href="/css/4.3-Catequista_Planejamento.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="/logo.jpg" alt="Acutis IVC">
+            <h2>Acutis IVC</h2>
+            <span>Sistema de Gestão da Catequese</span>
+        </div>
+        <nav>
+            <a href="/catequistaInicial"><i class="fas fa-house"></i> Início</a>
+            <a href="/planejamento" class="ativo"><i class="fas fa-calendar-days"></i> Planejamento</a>
+            <a href="/catequizandos"><i class="fas fa-clipboard-check"></i> Frequência</a>
+            <a href="/materiais"><i class="fas fa-book"></i> Materiais</a>
+            <a href="/grupos"><i class="fas fa-users"></i> Grupos</a>
+        </nav>
+    </aside>
+    <main class="principal">
+        <header class="banner"><img src="/topo.png" class="banner-img" alt="Banner"></header>
+
+        <section class="cabecalho">
+            <div class="titulo">
+                <h1>Planejamento</h1>
+                <p>Organize os encontros da catequese e acompanhe o progresso da turma.</p>
+            </div>
+        </section>
+        <section class="cards">
+            <div class="card rosa"><div class="icone"><i class="fas fa-calendar"></i></div>
+                <div><h3><%= planejamento ? planejamento.encontros.length : 0 %></h3><span>Total de Encontros</span></div></div>
+            <div class="card verde"><div class="icone"><i class="fas fa-check"></i></div>
+                <div><h3><%= planejamento ? planejamento.encontros.filter(e => e.tema).length : 0 %></h3><span>Planejados</span></div></div>
+            <div class="card dourado"><div class="icone"><i class="fas fa-star"></i></div>
+                <div><h3><%= planejamento ? planejamento.encontros.filter(e => e.tema === 'Outro').length : 0 %></h3><span>Personalizados</span></div></div>
+            <div class="card verde"><div class="icone"><i class="fas fa-circle-check"></i></div>
+                <div><h3><%= planejamento ? planejamento.encontros.filter(e => e.status === 'Realizado').length : 0 %></h3><span>Realizados</span></div></div>
+        </section>
+        <section class="painel">
+            <div class="painel-header">
+                <div><h2>Cronograma Catequético</h2>
+                <p>Consulte os planejamentos e organize os encontros do seu grupo.</p></div>
+                <a href="/planejamento/lst" class="btn principal">Ver planejamentos</a>
+                <a href="/planejamento/add" class="btn principal">Novo planejamento</a>
+            </div>
+        </section>
+<%- include("lst") %>
+<%- include("../rodape.ejs") %>
